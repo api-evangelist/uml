@@ -1,0 +1,19 @@
+{
+  "summary": "Get a sequence diagram as PNG from PlantUML Server",
+  "description": "This example shows how to render a PlantUML sequence diagram as a PNG image using the GET endpoint. The source is deflate + base64url encoded.",
+  "request": {
+    "method": "GET",
+    "url": "https://www.plantuml.com/plantuml/png/SoWkIImgAStDuNBAJrBGjLDmpCbCJbMmKiX8pSd9vt98pKi1IW80",
+    "headers": {
+      "Accept": "image/png"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "image/png"
+    },
+    "body": "<binary PNG image data>"
+  },
+  "diagramSource": "@startuml\nAlice -> Bob: Hello\nBob --> Alice: Hi!\n@enduml"
+}

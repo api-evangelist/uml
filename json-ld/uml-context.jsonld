@@ -1,0 +1,69 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "uml": "https://github.com/api-evangelist/uml/blob/main/json-ld/uml-context.jsonld#",
+
+    "Diagram": "schema:CreativeWork",
+    "DiagramType": "uml:DiagramType",
+    "DiagramFormat": "uml:DiagramFormat",
+
+    "id": "@id",
+    "title": "schema:name",
+    "description": "schema:description",
+    "diagramType": {
+      "@id": "uml:diagramType",
+      "@type": "@vocab"
+    },
+    "source": {
+      "@id": "uml:source",
+      "@type": "xsd:string"
+    },
+    "format": {
+      "@id": "uml:format",
+      "@type": "@vocab"
+    },
+    "encodedSource": {
+      "@id": "uml:encodedSource",
+      "@type": "xsd:string"
+    },
+    "outputUrl": {
+      "@id": "schema:contentUrl",
+      "@type": "@id"
+    },
+    "outputFormat": {
+      "@id": "uml:outputFormat",
+      "@type": "@vocab"
+    },
+    "tags": {
+      "@id": "schema:keywords",
+      "@container": "@list"
+    },
+    "created": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "modified": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+
+    "diagramTypes": {
+      "class": "uml:ClassDiagram",
+      "sequence": "uml:SequenceDiagram",
+      "activity": "uml:ActivityDiagram",
+      "usecase": "uml:UseCaseDiagram",
+      "state": "uml:StateDiagram",
+      "component": "uml:ComponentDiagram",
+      "deployment": "uml:DeploymentDiagram",
+      "object": "uml:ObjectDiagram",
+      "package": "uml:PackageDiagram",
+      "timing": "uml:TimingDiagram",
+      "interaction": "uml:InteractionDiagram",
+      "entity-relationship": "uml:EntityRelationshipDiagram"
+    }
+  }
+}

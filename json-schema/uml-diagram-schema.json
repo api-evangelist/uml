@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/api-evangelist/uml/blob/main/json-schema/uml-diagram-schema.json",
+  "title": "UML Diagram",
+  "description": "Schema representing a UML diagram definition, including its type, source text, and rendered output metadata.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the diagram"
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable title for the diagram"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of what the diagram represents"
+    },
+    "diagramType": {
+      "type": "string",
+      "description": "The type of UML or other diagram",
+      "enum": [
+        "class",
+        "sequence",
+        "activity",
+        "usecase",
+        "state",
+        "component",
+        "deployment",
+        "object",
+        "package",
+        "timing",
+        "interaction",
+        "collaboration",
+        "entity-relationship",
+        "flowchart",
+        "mindmap",
+        "gantt",
+        "other"
+      ]
+    },
+    "source": {
+      "type": "string",
+      "description": "The plain-text source of the diagram (e.g., PlantUML or Mermaid syntax)"
+    },
+    "format": {
+      "type": "string",
+      "description": "The markup language used for the diagram source",
+      "enum": [
+        "plantuml",
+        "mermaid",
+        "graphviz",
+        "d2",
+        "structurizr",
+        "nomnoml",
+        "excalidraw",
+        "other"
+      ]
+    },
+    "encodedSource": {
+      "type": "string",
+      "description": "Deflate + base64url encoded version of the source for use with PlantUML/Kroki GET APIs"
+    },
+    "outputUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the rendered diagram image (PNG, SVG, etc.)"
+    },
+    "outputFormat": {
+      "type": "string",
+      "description": "The output format of the rendered diagram",
+      "enum": ["svg", "png", "jpeg", "pdf", "ascii"]
+    },
+    "tags": {
+      "type": "array",
+      "description": "Tags categorizing the diagram content",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the diagram was created"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the diagram was last modified"
+    }
+  },
+  "required": ["diagramType", "source", "format"]
+}

@@ -1,0 +1,188 @@
+openapi: 3.0.3
+info:
+  title: PlantUML Server API
+  description: >-
+    The PlantUML Server provides a public REST API for generating UML and
+    non-UML diagrams from plain-text descriptions. The diagram source is
+    encoded into the URL path using a deflate + base64 algorithm. Multiple
+    output formats are supported including PNG, SVG, ASCII art, and PDF.
+  version: 1.0.0
+  contact:
+    name: PlantUML
+    url: https://plantuml.com/
+  license:
+    name: GPL v3 / MIT dual-license
+    url: https://plantuml.com/license
+externalDocs:
+  description: PlantUML Server API Reference
+  url: https://deepwiki.com/plantuml/plantuml-server/6-api-reference
+servers:
+  - url: https://www.plantuml.com/plantuml
+    description: Public PlantUML Server
+tags:
+  - name: Diagrams
+    description: Generate diagrams from encoded PlantUML source
+  - name: Validation
+    description: Validate PlantUML source syntax
+paths:
+  /png/{encoded}:
+    get:
+      operationId: getDiagramPng
+      summary: Get Diagram as PNG
+      description: >-
+        Renders a PlantUML diagram as a PNG image. The encoded parameter is the
+        PlantUML source compressed with deflate and encoded in base64url.
+      tags:
+        - Diagrams
+      parameters:
+        - name: encoded
+          in: path
+          required: true
+          description: Deflate + base64url encoded PlantUML source
+          schema:
+            type: string
+      responses:
+        '200':
+          description: PNG image of the rendered diagram
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Invalid or malformed encoded diagram source
+  /svg/{encoded}:
+    get:
+      operationId: getDiagramSvg
+      summary: Get Diagram as SVG
+      description: >-
+        Renders a PlantUML diagram as an SVG image. The encoded parameter is the
+        PlantUML source compressed with deflate and encoded in base64url.
+      tags:
+        - Diagrams
+      parameters:
+        - name: encoded
+          in: path
+          required: true
+          description: Deflate + base64url encoded PlantUML source
+          schema:
+            type: string
+      responses:
+        '200':
+          description: SVG image of the rendered diagram
+          content:
+            image/svg+xml:
+              schema:
+                type: string
+        '400':
+          description: Invalid or malformed encoded diagram source
+  /txt/{encoded}:
+    get:
+      operationId: getDiagramAscii
+      summary: Get Diagram as ASCII Art
+      description: >-
+        Renders a PlantUML diagram as ASCII art text. Useful for text-only
+        environments or embedding in documentation.
+      tags:
+        - Diagrams
+      parameters:
+        - name: encoded
+          in: path
+          required: true
+          description: Deflate + base64url encoded PlantUML source
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ASCII art text representation of the diagram
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Invalid or malformed encoded diagram source
+  /pdf/{encoded}:
+    get:
+      operationId: getDiagramPdf
+      summary: Get Diagram as PDF
+      description: >-
+        Renders a PlantUML diagram as a PDF document.
+      tags:
+        - Diagrams
+      parameters:
+        - name: encoded
+          in: path
+          required: true
+          description: Deflate + base64url encoded PlantUML source
+          schema:
+            type: string
+      responses:
+        '200':
+          description: PDF document of the rendered diagram
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Invalid or malformed encoded diagram source
+  /map/{encoded}:
+    get:
+      operationId: getDiagramImageMap
+      summary: Get Diagram HTML Image Map
+      description: >-
+        Returns an HTML image map for the diagram, enabling clickable areas
+        on diagrams rendered as PNG.
+      tags:
+        - Diagrams
+      parameters:
+        - name: encoded
+          in: path
+          required: true
+          description: Deflate + base64url encoded PlantUML source
+          schema:
+            type: string
+      responses:
+        '200':
+          description: HTML image map for the diagram
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Invalid or malformed encoded diagram source
+  /check/{encoded}:
+    get:
+      operationId: validateDiagramSyntax
+      summary: Validate Diagram Syntax
+      description: >-
+        Validates the PlantUML source syntax without rendering the diagram.
+        Returns a text description of parsing results including any error
+        messages.
+      tags:
+        - Validation
+      parameters:
+        - name: encoded
+          in: path
+          required: true
+          description: Deflate + base64url encoded PlantUML source
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Validation result describing parsing success or errors
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    DiagramError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong
+        line:
+          type: integer
+          description: Line number where the error occurred

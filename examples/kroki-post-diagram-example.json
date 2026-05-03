@@ -1,0 +1,20 @@
+{
+  "summary": "Post a Mermaid diagram to Kroki for SVG rendering",
+  "description": "This example shows how to render a Mermaid flowchart diagram as SVG using the Kroki POST endpoint.",
+  "request": {
+    "method": "POST",
+    "url": "https://kroki.io/mermaid/svg",
+    "headers": {
+      "Content-Type": "text/plain",
+      "Accept": "image/svg+xml"
+    },
+    "body": "graph LR\n    A[Start] --> B{Is it working?}\n    B -- Yes --> C[Great!]\n    B -- No --> D[Debug]\n    D --> A"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "image/svg+xml"
+    },
+    "body": "<svg ...>...</svg>"
+  }
+}

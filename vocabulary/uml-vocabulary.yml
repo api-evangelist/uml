@@ -1,0 +1,147 @@
+name: UML Vocabulary
+description: >-
+  Vocabulary and taxonomy for Unified Modeling Language (UML), covering
+  diagram types, notation elements, modeling concepts, and the APIs and
+  tools used to create and render UML programmatically.
+tags:
+  - UML
+  - Modeling
+  - Diagrams
+  - Software Architecture
+  - Design
+modified: '2026-05-03'
+
+domains:
+  - name: Diagram Types
+    description: The 14 official UML diagram types defined by OMG UML 2.5
+    terms:
+      - term: Class Diagram
+        definition: Shows the static structure of a system including classes, attributes, methods, and relationships
+        aliases: [Class Model]
+      - term: Sequence Diagram
+        definition: Shows how objects communicate with each other in a time-ordered sequence of messages
+        aliases: [Interaction Diagram]
+      - term: Activity Diagram
+        definition: Represents the workflow or business logic of a system using activities and transitions
+        aliases: [Workflow Diagram]
+      - term: Use Case Diagram
+        definition: Describes the functional behavior of a system from a user's perspective
+        aliases: []
+      - term: State Diagram
+        definition: Shows the states of an object and the transitions between those states
+        aliases: [State Machine Diagram, Statechart]
+      - term: Component Diagram
+        definition: Depicts the organization of components and their dependencies
+        aliases: []
+      - term: Deployment Diagram
+        definition: Shows the hardware and software infrastructure of a system
+        aliases: []
+      - term: Object Diagram
+        definition: Represents a snapshot of the instances in a system at a point in time
+        aliases: []
+      - term: Package Diagram
+        definition: Groups model elements into packages and shows dependencies between them
+        aliases: []
+      - term: Timing Diagram
+        definition: Shows the change in state or value of an object over time
+        aliases: []
+      - term: Interaction Overview Diagram
+        definition: A variant of activity diagram showing the flow of control between interactions
+        aliases: []
+      - term: Communication Diagram
+        definition: Shows how objects collaborate to realize behavior focusing on links
+        aliases: [Collaboration Diagram]
+      - term: Composite Structure Diagram
+        definition: Shows the internal structure of a class and the collaborations it uses
+        aliases: []
+      - term: Profile Diagram
+        definition: Provides a customization mechanism for extending UML metamodel
+        aliases: []
+
+  - name: UML Notation
+    description: Core notation elements and symbols used across UML diagram types
+    terms:
+      - term: Class
+        definition: A blueprint describing the attributes and behaviors of a set of objects
+      - term: Interface
+        definition: A contract specifying operations that a class must implement
+      - term: Abstract Class
+        definition: A class that cannot be instantiated and is intended to be subclassed
+      - term: Association
+        definition: A relationship between two classifiers, represented as a line
+      - term: Aggregation
+        definition: A weak form of ownership where the child can exist independently of the parent
+      - term: Composition
+        definition: A strong form of ownership where the child cannot exist without the parent
+      - term: Inheritance
+        definition: A generalization relationship where a child inherits from a parent
+        aliases: [Generalization]
+      - term: Dependency
+        definition: A usage relationship where one element depends on another
+      - term: Realization
+        definition: A relationship between an interface and a class that implements it
+      - term: Multiplicity
+        definition: Specifies how many instances participate in a relationship (e.g., 1..*, 0..1)
+      - term: Actor
+        definition: An external entity that interacts with the system in use case diagrams
+      - term: Lifeline
+        definition: Represents an individual participant in a sequence diagram
+      - term: Message
+        definition: Communication between lifelines in a sequence diagram
+      - term: Note
+        definition: An annotation attached to a diagram element
+      - term: Stereotype
+        definition: A customization mechanism that extends existing UML vocabulary
+
+  - name: Diagram Tools
+    description: Tools and platforms for creating and rendering UML diagrams
+    terms:
+      - term: PlantUML
+        definition: An open-source tool that generates UML diagrams from a simple text syntax
+        url: https://plantuml.com/
+      - term: Kroki
+        definition: A unified API for converting textual diagram descriptions to images supporting 20+ formats
+        url: https://kroki.io/
+      - term: Mermaid
+        definition: A JavaScript-based diagramming tool using a Markdown-inspired syntax
+        url: https://mermaid.js.org/
+      - term: draw.io
+        definition: A free online diagramming application supporting UML and many other diagram types
+        url: https://www.drawio.com/
+      - term: Lucidchart
+        definition: A cloud-based intelligent diagramming application
+        url: https://www.lucidchart.com/
+      - term: Visual Paradigm
+        definition: A UML modeling tool supporting the full UML specification
+        url: https://www.visual-paradigm.com/
+      - term: Enterprise Architect
+        definition: A comprehensive UML and modeling tool from Sparx Systems
+        url: https://sparxsystems.com/
+
+  - name: API Concepts
+    description: Concepts related to programmatic diagram generation via APIs
+    terms:
+      - term: Encoded Diagram
+        definition: A diagram source that has been compressed with deflate and base64url-encoded for use in GET request URLs
+      - term: Diagram Source
+        definition: The plain-text markup description of a diagram before encoding
+      - term: SVG Output
+        definition: Scalable Vector Graphics format output — the preferred format for web embedding
+      - term: PNG Output
+        definition: Portable Network Graphics raster image output
+      - term: Diagram Type
+        definition: The identifier specifying which diagramming library or syntax to use (e.g., plantuml, mermaid, graphviz)
+      - term: Self-Hosted
+        definition: Running a diagram API service on your own infrastructure rather than using a public cloud endpoint
+
+  - name: Governance
+    description: Standards bodies and governance organizations for UML
+    terms:
+      - term: OMG
+        definition: Object Management Group — the standards body that governs the UML specification
+        url: https://www.omg.org/
+      - term: UML 2.5
+        definition: The current major version of the UML specification published by OMG
+        url: https://www.omg.org/spec/UML/2.5.1/
+      - term: MOF
+        definition: Meta-Object Facility — the OMG standard for defining metamodels on which UML is based

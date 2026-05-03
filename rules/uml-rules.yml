@@ -1,0 +1,78 @@
+extends: spectral:oas
+rules:
+  uml-path-kebab-case:
+    description: Path segments must use kebab-case
+    message: Path segment "{{value}}" must use kebab-case (lowercase letters, numbers, hyphens only)
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^(/[a-z0-9{}-]+)+$'
+
+  uml-operation-ids-required:
+    description: All operations must have an operationId
+    message: Operation must have an operationId
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete,options,head]
+    then:
+      field: operationId
+      function: truthy
+
+  uml-operation-summary-title-case:
+    description: Operation summaries must use Title Case
+    message: Summary "{{value}}" must use Title Case
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][a-zA-Z0-9]*([ ][A-Z][a-zA-Z0-9]*)*$'
+
+  uml-tags-required:
+    description: Operations must have at least one tag
+    message: Operation must include at least one tag
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+
+  uml-responses-must-include-success:
+    description: Operations must define at least one 2xx success response
+    message: Operation must define at least one 2xx response
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          minProperties: 1
+
+  uml-info-contact-required:
+    description: API info must include contact information
+    message: API info must include a contact object
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  uml-servers-required:
+    description: API must define at least one server
+    message: API must include a servers array with at least one entry
+    severity: error
+    given: $
+    then:
+      field: servers
+      function: truthy
+
+  uml-path-parameters-described:
+    description: Path parameters must include a description
+    message: Path parameter "{{value}}" must have a description
+    severity: warn
+    given: $.paths[*][*].parameters[?(@.in == "path")]
+    then:
+      field: description
+      function: truthy

@@ -1,0 +1,87 @@
+{
+  "title": "UML Diagram Structure",
+  "description": "Structure documentation for the UML Diagram entity, describing fields, types, and relationships.",
+  "type": "object",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "description": "Unique identifier for the diagram"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false,
+      "description": "Human-readable title for the diagram"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Description of what the diagram represents"
+    },
+    {
+      "name": "diagramType",
+      "type": "enum",
+      "required": true,
+      "description": "The type of UML or other diagram",
+      "values": [
+        "class", "sequence", "activity", "usecase", "state",
+        "component", "deployment", "object", "package", "timing",
+        "interaction", "collaboration", "entity-relationship",
+        "flowchart", "mindmap", "gantt", "other"
+      ]
+    },
+    {
+      "name": "source",
+      "type": "string",
+      "required": true,
+      "description": "Plain-text source of the diagram in the chosen markup language"
+    },
+    {
+      "name": "format",
+      "type": "enum",
+      "required": true,
+      "description": "The markup language / tool format used for the source",
+      "values": ["plantuml", "mermaid", "graphviz", "d2", "structurizr", "nomnoml", "excalidraw", "other"]
+    },
+    {
+      "name": "encodedSource",
+      "type": "string",
+      "required": false,
+      "description": "Deflate + base64url encoded source for use with PlantUML/Kroki GET endpoints"
+    },
+    {
+      "name": "outputUrl",
+      "type": "uri",
+      "required": false,
+      "description": "URL to the rendered diagram image"
+    },
+    {
+      "name": "outputFormat",
+      "type": "enum",
+      "required": false,
+      "description": "The output format of the rendered image",
+      "values": ["svg", "png", "jpeg", "pdf", "ascii"]
+    },
+    {
+      "name": "tags",
+      "type": "array<string>",
+      "required": false,
+      "description": "Tags categorizing the diagram content"
+    },
+    {
+      "name": "created",
+      "type": "datetime",
+      "required": false,
+      "description": "ISO 8601 creation timestamp"
+    },
+    {
+      "name": "modified",
+      "type": "datetime",
+      "required": false,
+      "description": "ISO 8601 last-modified timestamp"
+    }
+  ]
+}
