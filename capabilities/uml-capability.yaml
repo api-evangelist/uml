@@ -1,0 +1,193 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Kroki Diagram API
+  description: Kroki provides a unified HTTP API for generating diagrams from textual descriptions. It supports over 20 diagram
+    types including PlantUML, Mermaid, GraphViz, BlockDiag, BPMN, C4, Structurizr, Excalidraw, Vega, WaveDrom, and more. Diagrams
+    can be submitted as GET requests with the source encoded in the URL or as POST requests with the source in the request
+    body.
+  tags:
+  - Uml
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: uml
+    baseUri: https://kroki.io
+    description: Kroki Diagram API HTTP API.
+    resources:
+    - name: resource
+      path: /
+      operations:
+      - name: gethealth
+        method: GET
+        description: Get Service Health
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: diagram-type-output-format-encoded-diagram
+      path: /{diagram_type}/{output_format}/{encoded_diagram}
+      operations:
+      - name: getdiagramget
+        method: GET
+        description: Get Diagram via GET
+        inputParameters:
+        - name: diagram_type
+          in: path
+          type: string
+          required: true
+          description: 'The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag,
+            actdiag, nwdiag, packetdiag, rackdiag, bpmn, bytefield, c4pla'
+        - name: output_format
+          in: path
+          type: string
+          required: true
+          description: 'Output format for the diagram. Supported formats: svg, png, jpeg, pdf (availability depends on diagram
+            type)'
+        - name: encoded_diagram
+          in: path
+          type: string
+          required: true
+          description: Deflate + base64url encoded diagram source text
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: diagram-type-output-format
+      path: /{diagram_type}/{output_format}
+      operations:
+      - name: postdiagram
+        method: POST
+        description: Post Diagram for Rendering
+        inputParameters:
+        - name: diagram_type
+          in: path
+          type: string
+          required: true
+          description: 'The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag,
+            actdiag, nwdiag, bpmn, c4plantuml, d2, ditaa, erd, excalidraw'
+        - name: output_format
+          in: path
+          type: string
+          required: true
+          description: Output format for the diagram (svg, png, jpeg, pdf)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: uml-rest
+    description: REST adapter for Kroki Diagram API.
+    resources:
+    - path: /
+      name: gethealth
+      operations:
+      - method: GET
+        name: gethealth
+        description: Get Service Health
+        call: uml.gethealth
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /{diagram_type}/{output_format}/{encoded_diagram}
+      name: getdiagramget
+      operations:
+      - method: GET
+        name: getdiagramget
+        description: Get Diagram via GET
+        call: uml.getdiagramget
+        with:
+          diagram_type: rest.diagram_type
+          output_format: rest.output_format
+          encoded_diagram: rest.encoded_diagram
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /{diagram_type}/{output_format}
+      name: postdiagram
+      operations:
+      - method: POST
+        name: postdiagram
+        description: Post Diagram for Rendering
+        call: uml.postdiagram
+        with:
+          diagram_type: rest.diagram_type
+          output_format: rest.output_format
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: uml-mcp
+    transport: http
+    description: MCP adapter for Kroki Diagram API for AI agent use.
+    tools:
+    - name: gethealth
+      description: Get Service Health
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uml.gethealth
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdiagramget
+      description: Get Diagram via GET
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uml.getdiagramget
+      with:
+        diagram_type: tools.diagram_type
+        output_format: tools.output_format
+        encoded_diagram: tools.encoded_diagram
+      inputParameters:
+      - name: diagram_type
+        type: string
+        description: 'The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag, actdiag,
+          nwdiag, packetdiag, rackdiag, bpmn, bytefield, c4pla'
+        required: true
+      - name: output_format
+        type: string
+        description: 'Output format for the diagram. Supported formats: svg, png, jpeg, pdf (availability depends on diagram
+          type)'
+        required: true
+      - name: encoded_diagram
+        type: string
+        description: Deflate + base64url encoded diagram source text
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postdiagram
+      description: Post Diagram for Rendering
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: uml.postdiagram
+      with:
+        diagram_type: tools.diagram_type
+        output_format: tools.output_format
+      inputParameters:
+      - name: diagram_type
+        type: string
+        description: 'The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag, actdiag,
+          nwdiag, bpmn, c4plantuml, d2, ditaa, erd, excalidraw'
+        required: true
+      - name: output_format
+        type: string
+        description: Output format for the diagram (svg, png, jpeg, pdf)
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
