@@ -61,7 +61,7 @@ apis:
       - url: https://docs.kroki.io/kroki/
         type: Documentation
       - url: https://docs.kroki.io/kroki/setup/usage/
-        type: Getting Started
+        type: GettingStarted
       - url: openapi/kroki-openapi.yml
         type: OpenAPI
     description: >-
@@ -90,7 +90,7 @@ common:
     url: https://plantuml.com/
   - type: Documentation
     url: https://docs.kroki.io/kroki/
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/uml-context.jsonld
   - type: Vocabulary
     url: vocabulary/uml-vocabulary.yml
