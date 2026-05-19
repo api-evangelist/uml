@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Kroki Diagram API — Health
+  description: 'Kroki Diagram API — Health. 1 operations. Lead operation: Get Service Health. Self-contained Naftiko capability
+    covering one Uml business surface.'
+  tags:
+  - Uml
+  - Health
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    UML_API_KEY: UML_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: kroki-health
+    baseUri: https://kroki.io
+    description: Kroki Diagram API — Health business capability. Self-contained, no shared references.
+    resources:
+    - name: root
+      path: /
+      operations:
+      - name: gethealth
+        method: GET
+        description: Get Service Health
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: kroki-health-rest
+    port: 8080
+    description: REST adapter for Kroki Diagram API — Health. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1
+      name: root
+      description: REST surface for root.
+      operations:
+      - method: GET
+        name: gethealth
+        description: Get Service Health
+        call: kroki-health.gethealth
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: kroki-health-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Kroki Diagram API — Health. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-service-health
+      description: Get Service Health
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: kroki-health.gethealth
+      outputParameters:
+      - type: object
+        mapping: $.

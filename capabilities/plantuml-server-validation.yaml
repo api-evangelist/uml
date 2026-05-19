@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PlantUML Server API — Validation
+  description: 'PlantUML Server API — Validation. 1 operations. Lead operation: Validate Diagram Syntax. Self-contained Naftiko
+    capability covering one Uml business surface.'
+  tags:
+  - Uml
+  - Validation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    UML_API_KEY: UML_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plantuml-server-validation
+    baseUri: https://www.plantuml.com/plantuml
+    description: PlantUML Server API — Validation business capability. Self-contained, no shared references.
+    resources:
+    - name: check-encoded
+      path: /check/{encoded}
+      operations:
+      - name: validatediagramsyntax
+        method: GET
+        description: Validate Diagram Syntax
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: encoded
+          in: path
+          type: string
+          description: Deflate + base64url encoded PlantUML source
+          required: true
+  exposes:
+  - type: rest
+    namespace: plantuml-server-validation-rest
+    port: 8080
+    description: REST adapter for PlantUML Server API — Validation. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/check/{encoded}
+      name: check-encoded
+      description: REST surface for check-encoded.
+      operations:
+      - method: GET
+        name: validatediagramsyntax
+        description: Validate Diagram Syntax
+        call: plantuml-server-validation.validatediagramsyntax
+        with:
+          encoded: rest.encoded
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plantuml-server-validation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for PlantUML Server API — Validation. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: validate-diagram-syntax
+      description: Validate Diagram Syntax
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plantuml-server-validation.validatediagramsyntax
+      with:
+        encoded: tools.encoded
+      outputParameters:
+      - type: object
+        mapping: $.
