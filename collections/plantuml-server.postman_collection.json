@@ -1,0 +1,761 @@
+{
+  "item": [
+    {
+      "id": "756e7523-af8b-46b2-b366-ffd2164f2437",
+      "name": "Diagrams",
+      "description": {
+        "content": "Generate diagrams from encoded PlantUML source",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8618375a-bbed-4d8f-861a-c2f1a073a51c",
+          "name": "Get Diagram as PNG",
+          "request": {
+            "name": "Get Diagram as PNG",
+            "description": {
+              "content": "Renders a PlantUML diagram as a PNG image. The encoded parameter is the PlantUML source compressed with deflate and encoded in base64url.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "png",
+                ":encoded"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encoded",
+                  "description": "(Required) Deflate + base64url encoded PlantUML source"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "44c9f244-9661-4913-90c8-e6d72628761e",
+              "name": "PNG image of the rendered diagram",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "png",
+                    ":encoded"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded",
+                      "description": "(Required) Deflate + base64url encoded PlantUML source"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8a91ff5-a69a-48e7-97fb-0e126a263715",
+              "name": "Invalid or malformed encoded diagram source",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "png",
+                    ":encoded"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded",
+                      "description": "(Required) Deflate + base64url encoded PlantUML source"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22b1790f-5415-4305-a0dc-bd5425f278d1",
+          "name": "Get Diagram as SVG",
+          "request": {
+            "name": "Get Diagram as SVG",
+            "description": {
+              "content": "Renders a PlantUML diagram as an SVG image. The encoded parameter is the PlantUML source compressed with deflate and encoded in base64url.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "svg",
+                ":encoded"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encoded",
+                  "description": "(Required) Deflate + base64url encoded PlantUML source"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/svg+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "600c6022-9699-47b8-bf6d-45b7c1fe7ab5",
+              "name": "SVG image of the rendered diagram",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "svg",
+                    ":encoded"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded",
+                      "description": "(Required) Deflate + base64url encoded PlantUML source"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/svg+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/svg+xml"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e19ab3e7-7f2c-461b-b694-8cda5447ca67",
+              "name": "Invalid or malformed encoded diagram source",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "svg",
+                    ":encoded"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded",
+                      "description": "(Required) Deflate + base64url encoded PlantUML source"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbbd9e83-9228-4f57-b387-d4971521298d",
+          "name": "Get Diagram as ASCII Art",
+          "request": {
+            "name": "Get Diagram as ASCII Art",
+            "description": {
+              "content": "Renders a PlantUML diagram as ASCII art text. Useful for text-only environments or embedding in documentation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "txt",
+                ":encoded"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encoded",
+                  "description": "(Required) Deflate + base64url encoded PlantUML source"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7bd90bb2-5861-4832-b711-78c81e01c592",
+              "name": "ASCII art text representation of the diagram",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "txt",
+                    ":encoded"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded",
+                      "description": "(Required) Deflate + base64url encoded PlantUML source"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16460223-fcb9-41b4-8508-5f6a1f2ebda1",
+              "name": "Invalid or malformed encoded diagram source",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "txt",
+                    ":encoded"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded",
+                      "description": "(Required) Deflate + base64url encoded PlantUML source"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b58ca802-74aa-454f-9ca5-82f8a2a472e9",
+          "name": "Get Diagram as PDF",
+          "request": {
+            "name": "Get Diagram as PDF",
+            "description": {
+              "content": "Renders a PlantUML diagram as a PDF document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pdf",
+                ":encoded"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encoded",
+                  "description": "(Required) Deflate + base64url encoded PlantUML source"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0aeb9b99-6e95-4fda-9b43-80786e5b84c8",
+              "name": "PDF document of the rendered diagram",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf",
+                    ":encoded"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded",
+                      "description": "(Required) Deflate + base64url encoded PlantUML source"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "02ff56b5-9128-4af1-b71c-b42d1cfc5488",
+              "name": "Invalid or malformed encoded diagram source",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf",
+                    ":encoded"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded",
+                      "description": "(Required) Deflate + base64url encoded PlantUML source"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "798fd0f5-af88-44ea-9ed6-704e35c43d22",
+          "name": "Get Diagram HTML Image Map",
+          "request": {
+            "name": "Get Diagram HTML Image Map",
+            "description": {
+              "content": "Returns an HTML image map for the diagram, enabling clickable areas on diagrams rendered as PNG.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "map",
+                ":encoded"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encoded",
+                  "description": "(Required) Deflate + base64url encoded PlantUML source"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c7dd7cc7-78b0-47b7-a157-37261fc42bca",
+              "name": "HTML image map for the diagram",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    ":encoded"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded",
+                      "description": "(Required) Deflate + base64url encoded PlantUML source"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d1f74d6-480e-43f9-8134-32a3f91c3b09",
+              "name": "Invalid or malformed encoded diagram source",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    ":encoded"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded",
+                      "description": "(Required) Deflate + base64url encoded PlantUML source"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d0c064f4-20bb-4423-9d47-c23953475671",
+      "name": "Validation",
+      "description": {
+        "content": "Validate PlantUML source syntax",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "87678fc9-c8aa-4d33-909c-ce5c6ba44d66",
+          "name": "Validate Diagram Syntax",
+          "request": {
+            "name": "Validate Diagram Syntax",
+            "description": {
+              "content": "Validates the PlantUML source syntax without rendering the diagram. Returns a text description of parsing results including any error messages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "check",
+                ":encoded"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encoded",
+                  "description": "(Required) Deflate + base64url encoded PlantUML source"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eeca6371-9cff-4772-a109-6949c24203eb",
+              "name": "Validation result describing parsing success or errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "check",
+                    ":encoded"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded",
+                      "description": "(Required) Deflate + base64url encoded PlantUML source"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.plantuml.com/plantuml",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f2ca2071-8c81-4605-8bdd-46ea29589cf5",
+    "name": "PlantUML Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The PlantUML Server provides a public REST API for generating UML and non-UML diagrams from plain-text descriptions. The diagram source is encoded into the URL path using a deflate + base64 algorithm. Multiple output formats are supported including PNG, SVG, ASCII art, and PDF.\n\nContact Support:\n Name: PlantUML",
+      "type": "text/plain"
+    }
+  }
+}

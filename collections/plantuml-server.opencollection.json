@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PlantUML Server API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Diagrams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Diagram as PNG",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.plantuml.com/plantuml/png/:encoded",
+            "params": [
+              {
+                "name": "encoded",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded PlantUML source"
+              }
+            ]
+          },
+          "docs": "Renders a PlantUML diagram as a PNG image. The encoded parameter is the PlantUML source compressed with deflate and encoded in base64url."
+        },
+        {
+          "info": {
+            "name": "Get Diagram as SVG",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.plantuml.com/plantuml/svg/:encoded",
+            "params": [
+              {
+                "name": "encoded",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded PlantUML source"
+              }
+            ]
+          },
+          "docs": "Renders a PlantUML diagram as an SVG image. The encoded parameter is the PlantUML source compressed with deflate and encoded in base64url."
+        },
+        {
+          "info": {
+            "name": "Get Diagram as ASCII Art",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.plantuml.com/plantuml/txt/:encoded",
+            "params": [
+              {
+                "name": "encoded",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded PlantUML source"
+              }
+            ]
+          },
+          "docs": "Renders a PlantUML diagram as ASCII art text. Useful for text-only environments or embedding in documentation."
+        },
+        {
+          "info": {
+            "name": "Get Diagram as PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.plantuml.com/plantuml/pdf/:encoded",
+            "params": [
+              {
+                "name": "encoded",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded PlantUML source"
+              }
+            ]
+          },
+          "docs": "Renders a PlantUML diagram as a PDF document."
+        },
+        {
+          "info": {
+            "name": "Get Diagram HTML Image Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.plantuml.com/plantuml/map/:encoded",
+            "params": [
+              {
+                "name": "encoded",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded PlantUML source"
+              }
+            ]
+          },
+          "docs": "Returns an HTML image map for the diagram, enabling clickable areas on diagrams rendered as PNG."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Validation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate Diagram Syntax",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.plantuml.com/plantuml/check/:encoded",
+            "params": [
+              {
+                "name": "encoded",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded PlantUML source"
+              }
+            ]
+          },
+          "docs": "Validates the PlantUML source syntax without rendering the diagram. Returns a text description of parsing results including any error messages."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

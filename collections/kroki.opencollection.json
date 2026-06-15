@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kroki Diagram API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Service Health",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://kroki.io/"
+          },
+          "docs": "Returns the health status of the Kroki service."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Diagrams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Diagram via GET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://kroki.io/:diagram_type/:output_format/:encoded_diagram",
+            "params": [
+              {
+                "name": "diagram_type",
+                "value": "",
+                "type": "path",
+                "description": "The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag, actdiag, nwdiag, packetdiag, rackdiag, bpmn, bytefield, c4plantuml, d2, dbml, ditaa, erd, excalidraw, nomnoml, pikchr, structurizr, svgbob, symbolator, tikz, umlet, vega, vega-lite, wavedrom, wireviz"
+              },
+              {
+                "name": "output_format",
+                "value": "",
+                "type": "path",
+                "description": "Output format for the diagram. Supported formats: svg, png, jpeg, pdf (availability depends on diagram type)"
+              },
+              {
+                "name": "encoded_diagram",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded diagram source text"
+              }
+            ]
+          },
+          "docs": "Generates a diagram from an encoded source using a GET request. The diagram source must be compressed with deflate and encoded in base64url format. The diagram type and output format are specified in the URL path."
+        },
+        {
+          "info": {
+            "name": "Post Diagram for Rendering",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://kroki.io/:diagram_type/:output_format",
+            "params": [
+              {
+                "name": "diagram_type",
+                "value": "",
+                "type": "path",
+                "description": "The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag, actdiag, nwdiag, bpmn, c4plantuml, d2, ditaa, erd, excalidraw, nomnoml, structurizr, svgbob, umlet, vega, vega-lite, wavedrom, wireviz"
+              },
+              {
+                "name": "output_format",
+                "value": "",
+                "type": "path",
+                "description": "Output format for the diagram (svg, png, jpeg, pdf)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a diagram from a plain-text source using a POST request. The diagram source is sent in the request body. Supports plain text (text/plain) or JSON (application/json) with a \"diagram_source\" key. The output format is specified in the URL path."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

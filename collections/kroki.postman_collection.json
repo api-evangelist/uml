@@ -1,0 +1,472 @@
+{
+  "item": [
+    {
+      "id": "22d70dc5-3f6e-4b9a-bac0-594bd96f3e9e",
+      "name": "Diagrams",
+      "description": {
+        "content": "Generate diagrams from textual descriptions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ae1e6907-9286-4dfd-9814-14852df29838",
+          "name": "Get Diagram via GET",
+          "request": {
+            "name": "Get Diagram via GET",
+            "description": {
+              "content": "Generates a diagram from an encoded source using a GET request. The diagram source must be compressed with deflate and encoded in base64url format. The diagram type and output format are specified in the URL path.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":diagram_type",
+                ":output_format",
+                ":encoded_diagram"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "diagram_type",
+                  "description": "(Required) The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag, actdiag, nwdiag, packetdiag, rackdiag, bpmn, bytefield, c4plantuml, d2, dbml, ditaa, erd, excalidraw, nomnoml, pikchr, structurizr, svgbob, symbolator, tikz, umlet, vega, vega-lite, wavedrom, wireviz"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "output_format",
+                  "description": "(Required) Output format for the diagram. Supported formats: svg, png, jpeg, pdf (availability depends on diagram type)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encoded_diagram",
+                  "description": "(Required) Deflate + base64url encoded diagram source text"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/svg+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c6f5fa9-b304-4de3-a1c0-a3c757bdf0e4",
+              "name": "Generated diagram in the requested output format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":diagram_type",
+                    ":output_format",
+                    ":encoded_diagram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "diagram_type",
+                      "description": "(Required) The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag, actdiag, nwdiag, packetdiag, rackdiag, bpmn, bytefield, c4plantuml, d2, dbml, ditaa, erd, excalidraw, nomnoml, pikchr, structurizr, svgbob, symbolator, tikz, umlet, vega, vega-lite, wavedrom, wireviz"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "output_format",
+                      "description": "(Required) Output format for the diagram. Supported formats: svg, png, jpeg, pdf (availability depends on diagram type)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded_diagram",
+                      "description": "(Required) Deflate + base64url encoded diagram source text"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/svg+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/svg+xml"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c7f43e1-1c24-4b3f-bdde-e867194b9bed",
+              "name": "Bad request — invalid diagram type, format, or source",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":diagram_type",
+                    ":output_format",
+                    ":encoded_diagram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "diagram_type",
+                      "description": "(Required) The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag, actdiag, nwdiag, packetdiag, rackdiag, bpmn, bytefield, c4plantuml, d2, dbml, ditaa, erd, excalidraw, nomnoml, pikchr, structurizr, svgbob, symbolator, tikz, umlet, vega, vega-lite, wavedrom, wireviz"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "output_format",
+                      "description": "(Required) Output format for the diagram. Supported formats: svg, png, jpeg, pdf (availability depends on diagram type)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encoded_diagram",
+                      "description": "(Required) Deflate + base64url encoded diagram source text"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status_code\": 2874\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2006aa81-e43b-4fbb-9e29-720fe2e3947d",
+          "name": "Post Diagram for Rendering",
+          "request": {
+            "name": "Post Diagram for Rendering",
+            "description": {
+              "content": "Generates a diagram from a plain-text source using a POST request. The diagram source is sent in the request body. Supports plain text (text/plain) or JSON (application/json) with a \"diagram_source\" key. The output format is specified in the URL path.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":diagram_type",
+                ":output_format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "diagram_type",
+                  "description": "(Required) The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag, actdiag, nwdiag, bpmn, c4plantuml, d2, ditaa, erd, excalidraw, nomnoml, structurizr, svgbob, umlet, vega, vega-lite, wavedrom, wireviz"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "output_format",
+                  "description": "(Required) Output format for the diagram (svg, png, jpeg, pdf)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "image/svg+xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"diagram_source\": \"<string>\",\n  \"diagram_options\": {\n    \"key_0\": 2552,\n    \"key_1\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b1a06e7-ed2f-4267-9764-258206b9a599",
+              "name": "Generated diagram in the requested output format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":diagram_type",
+                    ":output_format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "diagram_type",
+                      "description": "(Required) The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag, actdiag, nwdiag, bpmn, c4plantuml, d2, ditaa, erd, excalidraw, nomnoml, structurizr, svgbob, umlet, vega, vega-lite, wavedrom, wireviz"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "output_format",
+                      "description": "(Required) Output format for the diagram (svg, png, jpeg, pdf)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/svg+xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"diagram_source\": \"<string>\",\n  \"diagram_options\": {\n    \"key_0\": 4812.466371108124,\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/svg+xml"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f4c74bd8-635e-4986-81d6-140513150563",
+              "name": "Bad request — invalid diagram type, format, or source",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":diagram_type",
+                    ":output_format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "diagram_type",
+                      "description": "(Required) The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag, actdiag, nwdiag, bpmn, c4plantuml, d2, ditaa, erd, excalidraw, nomnoml, structurizr, svgbob, umlet, vega, vega-lite, wavedrom, wireviz"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "output_format",
+                      "description": "(Required) Output format for the diagram (svg, png, jpeg, pdf)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"diagram_source\": \"<string>\",\n  \"diagram_options\": {\n    \"key_0\": 4812.466371108124,\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status_code\": 2874\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c3e8e965-af37-4236-a75d-fae4a44d0022",
+      "name": "Health",
+      "description": {
+        "content": "Service health check",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "64596849-24e8-48b6-bb09-7452322fc558",
+          "name": "Get Service Health",
+          "request": {
+            "name": "Get Service Health",
+            "description": {
+              "content": "Returns the health status of the Kroki service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0437abf4-d416-436d-8e12-64d73519a2d7",
+              "name": "Service is healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"pass\",\n  \"version\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://kroki.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "47f1607b-a10e-4424-b2a4-40c783046550",
+    "name": "Kroki Diagram API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Kroki provides a unified HTTP API for generating diagrams from textual descriptions. It supports over 20 diagram types including PlantUML, Mermaid, GraphViz, BlockDiag, BPMN, C4, Structurizr, Excalidraw, Vega, WaveDrom, and more. Diagrams can be submitted as GET requests with the source encoded in the URL or as POST requests with the source in the request body.\n\nContact Support:\n Name: Kroki",
+      "type": "text/plain"
+    }
+  }
+}
