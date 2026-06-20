@@ -8,7 +8,7 @@ description: >-
   programmatically.
 url: https://raw.githubusercontent.com/api-evangelist/uml/refs/heads/main/apis.yml
 type: Index
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - UML
   - Modeling
@@ -27,7 +27,7 @@ apis:
       - Diagrams
       - PlantUML
       - Text-To-Diagram
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://www.plantuml.com/plantuml
     humanURL: https://plantuml.com/
     properties:
@@ -50,7 +50,7 @@ apis:
       - Multi-Format
       - Text-To-Diagram
       - Open Source
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://kroki.io
     humanURL: https://kroki.io/
     properties:
