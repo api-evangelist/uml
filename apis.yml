@@ -66,13 +66,13 @@ apis:
       Requests can be sent as GET (diagram encoded in URL) or POST (diagram in request body). Output formats include
       SVG, PNG, PDF, and JPEG. Kroki is open source and can be self-hosted.
 common:
-  - type: GitHub Org
+  - type: GitHubOrg
     url: https://github.com/plantuml
-  - type: GitHub Org
+  - type: GitHubOrg
     url: https://github.com/yuzutech
   - type: Website
     url: https://www.omg.org/uml/
-  - type: Standard
+  - type: Standards
     url: https://www.omg.org/spec/UML/
   - type: Wikipedia
     url: https://en.wikipedia.org/wiki/Unified_Modeling_Language
@@ -90,7 +90,7 @@ common:
     url: vocabulary/uml-vocabulary.yml
   - type: JSONSchema
     url: json-schema/uml-diagram-schema.json
-  - type: Spectral Rules
+  - type: SpectralRules
     url: rules/uml-rules.yml
 maintainers:
   - FN: Kin Lane
