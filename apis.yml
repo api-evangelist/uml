@@ -66,6 +66,8 @@ apis:
       Requests can be sent as GET (diagram encoded in URL) or POST (diagram in request body). Output formats include
       SVG, PNG, PDF, and JPEG. Kroki is open source and can be self-hosted.
 common:
+  - type: DomainSecurity
+    url: security/uml-domain-security.yml
   - type: GitHubOrg
     url: https://github.com/plantuml
   - type: GitHubOrg

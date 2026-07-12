@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.omg.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 16 05:03:03 2026 GMT
+  hsts: false
+- host: plantuml.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 24 08:43:46 2026 GMT
+  hsts: false
+- host: www.plantuml.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 16 15:46:23 2026 GMT
+  hsts: false
+domains:
+- domain: omg.org
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: plantuml.com
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
