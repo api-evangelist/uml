@@ -1,0 +1,47 @@
+openapi: 3.0.3
+info:
+  title: Kroki Diagram Diagrams Health API
+  description: Kroki provides a unified HTTP API for generating diagrams from textual descriptions. It supports over 20 diagram types including PlantUML, Mermaid, GraphViz, BlockDiag, BPMN, C4, Structurizr, Excalidraw, Vega, WaveDrom, and more. Diagrams can be submitted as GET requests with the source encoded in the URL or as POST requests with the source in the request body.
+  version: 1.0.0
+  contact:
+    name: Kroki
+    url: https://kroki.io/
+  license:
+    name: MIT
+    url: https://github.com/yuzutech/kroki/blob/master/LICENSE
+servers:
+- url: https://kroki.io
+  description: Public Kroki API
+tags:
+- name: Health
+  description: Service health check
+paths:
+  /:
+    get:
+      operationId: getHealth
+      summary: Get Service Health
+      description: Returns the health status of the Kroki service.
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Health status of the service
+          example: pass
+        version:
+          type: string
+          description: Version of the Kroki service
+externalDocs:
+  description: Kroki Documentation
+  url: https://docs.kroki.io/kroki/
