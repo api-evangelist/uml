@@ -8,7 +8,19 @@ description: >-
   programmatically.
 url: https://raw.githubusercontent.com/api-evangelist/uml/refs/heads/main/apis.yml
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/uml.png
 tags:
   - UML
   - Modeling
@@ -20,51 +32,60 @@ created: '2025-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: uml:plantuml-server
-    name: PlantUML Server API
-    tags:
-      - UML
-      - Diagrams
-      - PlantUML
-      - Text-To-Diagram
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://www.plantuml.com/plantuml
-    humanURL: https://plantuml.com/
-    properties:
-      - url: https://plantuml.com/
-        type: Documentation
-      - url: https://deepwiki.com/plantuml/plantuml-server/6-api-reference
-        type: Documentation
-      - url: openapi/plantuml-server-openapi.yml
-        type: OpenAPI
-    description: >-
-      PlantUML Server provides a public REST API for generating UML diagrams from plain-text descriptions. Diagrams are
-      encoded in the URL path using a deflate + base64 scheme. The server supports multiple output formats including
-      PNG, SVG, ASCII art, and PDF. Diagram types include class, sequence, activity, component, state, use case,
-      deployment, timing, and more.
-  - aid: uml:kroki
-    name: Kroki Diagram API
-    tags:
-      - UML
-      - Diagrams
-      - Multi-Format
-      - Text-To-Diagram
-      - Open Source
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://kroki.io
-    humanURL: https://kroki.io/
-    properties:
-      - url: https://docs.kroki.io/kroki/
-        type: Documentation
-      - url: https://docs.kroki.io/kroki/setup/usage/
-        type: GettingStarted
-      - url: openapi/kroki-openapi.yml
-        type: OpenAPI
-    description: >-
-      Kroki provides a unified HTTP API for generating diagrams from textual descriptions. It supports over 20 diagram
-      types including PlantUML, Mermaid, GraphViz, BlockDiag, BPMN, C4, Structurizr, Excalidraw, Vega, and WaveDrom.
-      Requests can be sent as GET (diagram encoded in URL) or POST (diagram in request body). Output formats include
-      SVG, PNG, PDF, and JPEG. Kroki is open source and can be self-hosted.
+- aid: uml:uml-diagrams-api
+  name: UML Diagrams API
+  description: Generate diagrams from textual descriptions
+  humanURL: https://plantuml.com/
+  baseURL: https://www.plantuml.com/plantuml
+  tags:
+  - Diagrams
+  properties:
+  - type: OpenAPI
+    url: openapi/uml-diagrams-api-openapi.yml
+  - type: Documentation
+    url: https://plantuml.com/
+  - type: Documentation
+    url: https://deepwiki.com/plantuml/plantuml-server/6-api-reference
+  - type: Documentation
+    url: https://docs.kroki.io/kroki/
+  - type: GettingStarted
+    url: https://docs.kroki.io/kroki/setup/usage/
+- aid: uml:uml-health-api
+  name: UML Health API
+  description: Service health check
+  humanURL: https://plantuml.com/
+  baseURL: https://www.plantuml.com/plantuml
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/uml-health-api-openapi.yml
+  - type: Documentation
+    url: https://plantuml.com/
+  - type: Documentation
+    url: https://deepwiki.com/plantuml/plantuml-server/6-api-reference
+  - type: Documentation
+    url: https://docs.kroki.io/kroki/
+  - type: GettingStarted
+    url: https://docs.kroki.io/kroki/setup/usage/
+- aid: uml:uml-validation-api
+  name: UML Validation API
+  description: Validate PlantUML source syntax
+  humanURL: https://plantuml.com/
+  baseURL: https://www.plantuml.com/plantuml
+  tags:
+  - Validation
+  properties:
+  - type: OpenAPI
+    url: openapi/uml-validation-api-openapi.yml
+  - type: Documentation
+    url: https://plantuml.com/
+  - type: Documentation
+    url: https://deepwiki.com/plantuml/plantuml-server/6-api-reference
+  - type: Documentation
+    url: https://docs.kroki.io/kroki/
+  - type: GettingStarted
+    url: https://docs.kroki.io/kroki/setup/usage/
 common:
   - type: AgenticAccess
     url: agentic-access/uml-agentic-access.yml
