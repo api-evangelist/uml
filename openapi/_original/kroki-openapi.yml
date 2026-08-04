@@ -1,0 +1,239 @@
+openapi: 3.0.3
+info:
+  title: Kroki Diagram API
+  description: >-
+    Kroki provides a unified HTTP API for generating diagrams from textual
+    descriptions. It supports over 20 diagram types including PlantUML,
+    Mermaid, GraphViz, BlockDiag, BPMN, C4, Structurizr, Excalidraw, Vega,
+    WaveDrom, and more. Diagrams can be submitted as GET requests with the
+    source encoded in the URL or as POST requests with the source in the
+    request body.
+  version: 1.0.0
+  contact:
+    name: Kroki
+    url: https://kroki.io/
+  license:
+    name: MIT
+    url: https://github.com/yuzutech/kroki/blob/master/LICENSE
+externalDocs:
+  description: Kroki Documentation
+  url: https://docs.kroki.io/kroki/
+servers:
+  - url: https://kroki.io
+    description: Public Kroki API
+tags:
+  - name: Diagrams
+    description: Generate diagrams from textual descriptions
+  - name: Health
+    description: Service health check
+paths:
+  /:
+    get:
+      operationId: getHealth
+      summary: Get Service Health
+      description: Returns the health status of the Kroki service.
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+  /{diagram_type}/{output_format}/{encoded_diagram}:
+    get:
+      operationId: getDiagramGet
+      summary: Get Diagram via GET
+      description: >-
+        Generates a diagram from an encoded source using a GET request. The
+        diagram source must be compressed with deflate and encoded in base64url
+        format. The diagram type and output format are specified in the URL path.
+      tags:
+        - Diagrams
+      parameters:
+        - name: diagram_type
+          in: path
+          required: true
+          description: >-
+            The type of diagram to generate. Supported types: plantuml, mermaid,
+            graphviz, blockdiag, seqdiag, actdiag, nwdiag, packetdiag, rackdiag,
+            bpmn, bytefield, c4plantuml, d2, dbml, ditaa, erd, excalidraw,
+            nomnoml, pikchr, structurizr, svgbob, symbolator, tikz, umlet,
+            vega, vega-lite, wavedrom, wireviz
+          schema:
+            type: string
+            enum:
+              - plantuml
+              - mermaid
+              - graphviz
+              - blockdiag
+              - seqdiag
+              - actdiag
+              - nwdiag
+              - packetdiag
+              - rackdiag
+              - bpmn
+              - bytefield
+              - c4plantuml
+              - d2
+              - dbml
+              - ditaa
+              - erd
+              - excalidraw
+              - nomnoml
+              - pikchr
+              - structurizr
+              - svgbob
+              - symbolator
+              - tikz
+              - umlet
+              - vega
+              - vega-lite
+              - wavedrom
+              - wireviz
+        - name: output_format
+          in: path
+          required: true
+          description: >-
+            Output format for the diagram. Supported formats: svg, png, jpeg,
+            pdf (availability depends on diagram type)
+          schema:
+            type: string
+            enum:
+              - svg
+              - png
+              - jpeg
+              - pdf
+        - name: encoded_diagram
+          in: path
+          required: true
+          description: Deflate + base64url encoded diagram source text
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Generated diagram in the requested output format
+          content:
+            image/svg+xml:
+              schema:
+                type: string
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad request — invalid diagram type, format, or source
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /{diagram_type}/{output_format}:
+    post:
+      operationId: postDiagram
+      summary: Post Diagram for Rendering
+      description: >-
+        Generates a diagram from a plain-text source using a POST request.
+        The diagram source is sent in the request body. Supports plain text
+        (text/plain) or JSON (application/json) with a "diagram_source" key.
+        The output format is specified in the URL path.
+      tags:
+        - Diagrams
+      parameters:
+        - name: diagram_type
+          in: path
+          required: true
+          description: >-
+            The type of diagram to generate. Supported types: plantuml, mermaid,
+            graphviz, blockdiag, seqdiag, actdiag, nwdiag, bpmn, c4plantuml,
+            d2, ditaa, erd, excalidraw, nomnoml, structurizr, svgbob, umlet,
+            vega, vega-lite, wavedrom, wireviz
+          schema:
+            type: string
+        - name: output_format
+          in: path
+          required: true
+          description: Output format for the diagram (svg, png, jpeg, pdf)
+          schema:
+            type: string
+            enum:
+              - svg
+              - png
+              - jpeg
+              - pdf
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+              description: Plain text diagram source
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiagramRequest'
+      responses:
+        '200':
+          description: Generated diagram in the requested output format
+          content:
+            image/svg+xml:
+              schema:
+                type: string
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad request — invalid diagram type, format, or source
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    DiagramRequest:
+      type: object
+      required:
+        - diagram_source
+      properties:
+        diagram_source:
+          type: string
+          description: The plain text source of the diagram to render
+        diagram_options:
+          type: object
+          description: Optional rendering options specific to the diagram type
+          additionalProperties: true
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Health status of the service
+          example: pass
+        version:
+          type: string
+          description: Version of the Kroki service
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong
+        status_code:
+          type: integer
+          description: HTTP status code

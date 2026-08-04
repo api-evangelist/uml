@@ -1,0 +1,18 @@
+{
+  "provider": "uml",
+  "sources": [
+    "uml-diagrams-api-openapi.yml",
+    "uml-health-api-openapi.yml",
+    "uml-validation-api-openapi.yml"
+  ],
+  "outputs": [
+    "uml-diagrams-api-openapi.yml",
+    "uml-health-api-openapi.yml",
+    "uml-validation-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
