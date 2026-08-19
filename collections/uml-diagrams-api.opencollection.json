@@ -1,0 +1,173 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kroki Diagram Diagrams API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Diagrams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Diagram via GET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://kroki.io/:diagram_type/:output_format/:encoded_diagram",
+            "params": [
+              {
+                "name": "diagram_type",
+                "value": "",
+                "type": "path",
+                "description": "The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag, actdiag, nwdiag, packetdiag, rackdiag, bpmn, bytefield, c4plantuml, d2, dbml, ditaa, erd, excalidraw, nomnoml, pikchr, structurizr, svgbob, symbolator, tikz, umlet, vega, vega-lite, wavedrom, wireviz"
+              },
+              {
+                "name": "output_format",
+                "value": "",
+                "type": "path",
+                "description": "Output format for the diagram. Supported formats: svg, png, jpeg, pdf (availability depends on diagram type)"
+              },
+              {
+                "name": "encoded_diagram",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded diagram source text"
+              }
+            ]
+          },
+          "docs": "Generates a diagram from an encoded source using a GET request. The diagram source must be compressed with deflate and encoded in base64url format. The diagram type and output format are specified in the URL path."
+        },
+        {
+          "info": {
+            "name": "Post Diagram for Rendering",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://kroki.io/:diagram_type/:output_format",
+            "params": [
+              {
+                "name": "diagram_type",
+                "value": "",
+                "type": "path",
+                "description": "The type of diagram to generate. Supported types: plantuml, mermaid, graphviz, blockdiag, seqdiag, actdiag, nwdiag, bpmn, c4plantuml, d2, ditaa, erd, excalidraw, nomnoml, structurizr, svgbob, umlet, vega, vega-lite, wavedrom, wireviz"
+              },
+              {
+                "name": "output_format",
+                "value": "",
+                "type": "path",
+                "description": "Output format for the diagram (svg, png, jpeg, pdf)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a diagram from a plain-text source using a POST request. The diagram source is sent in the request body. Supports plain text (text/plain) or JSON (application/json) with a \"diagram_source\" key. The output format is specified in the URL path."
+        },
+        {
+          "info": {
+            "name": "Get Diagram as PNG",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://kroki.io/png/:encoded",
+            "params": [
+              {
+                "name": "encoded",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded PlantUML source"
+              }
+            ]
+          },
+          "docs": "Renders a PlantUML diagram as a PNG image. The encoded parameter is the PlantUML source compressed with deflate and encoded in base64url."
+        },
+        {
+          "info": {
+            "name": "Get Diagram as SVG",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://kroki.io/svg/:encoded",
+            "params": [
+              {
+                "name": "encoded",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded PlantUML source"
+              }
+            ]
+          },
+          "docs": "Renders a PlantUML diagram as an SVG image. The encoded parameter is the PlantUML source compressed with deflate and encoded in base64url."
+        },
+        {
+          "info": {
+            "name": "Get Diagram as ASCII Art",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://kroki.io/txt/:encoded",
+            "params": [
+              {
+                "name": "encoded",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded PlantUML source"
+              }
+            ]
+          },
+          "docs": "Renders a PlantUML diagram as ASCII art text. Useful for text-only environments or embedding in documentation."
+        },
+        {
+          "info": {
+            "name": "Get Diagram as PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://kroki.io/pdf/:encoded",
+            "params": [
+              {
+                "name": "encoded",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded PlantUML source"
+              }
+            ]
+          },
+          "docs": "Renders a PlantUML diagram as a PDF document."
+        },
+        {
+          "info": {
+            "name": "Get Diagram HTML Image Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://kroki.io/map/:encoded",
+            "params": [
+              {
+                "name": "encoded",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded PlantUML source"
+              }
+            ]
+          },
+          "docs": "Returns an HTML image map for the diagram, enabling clickable areas on diagrams rendered as PNG."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

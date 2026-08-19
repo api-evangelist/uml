@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kroki Diagram Diagrams Validation API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Validation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate Diagram Syntax",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://kroki.io/check/:encoded",
+            "params": [
+              {
+                "name": "encoded",
+                "value": "",
+                "type": "path",
+                "description": "Deflate + base64url encoded PlantUML source"
+              }
+            ]
+          },
+          "docs": "Validates the PlantUML source syntax without rendering the diagram. Returns a text description of parsing results including any error messages."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
