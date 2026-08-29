@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Kroki Diagram Diagrams Health API
+  title: Kroki Diagram Health API
   description: Kroki provides a unified HTTP API for generating diagrams from textual descriptions. It supports over 20 diagram types including PlantUML, Mermaid, GraphViz, BlockDiag, BPMN, C4, Structurizr, Excalidraw, Vega, WaveDrom, and more. Diagrams can be submitted as GET requests with the source encoded in the URL or as POST requests with the source in the request body.
   version: 1.0.0
   contact:

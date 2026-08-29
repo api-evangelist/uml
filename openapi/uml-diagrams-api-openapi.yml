@@ -1,17 +1,13 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Kroki Diagram Diagrams API
-  description: Kroki provides a unified HTTP API for generating diagrams from textual descriptions. It supports over 20 diagram types including PlantUML, Mermaid, GraphViz, BlockDiag, BPMN, C4, Structurizr, Excalidraw, Vega, WaveDrom, and more. Diagrams can be submitted as GET requests with the source encoded in the URL or as POST requests with the source in the request body.
+  title: Uml Diagrams API
   version: 1.0.0
-  contact:
-    name: Kroki
-    url: https://kroki.io/
-  license:
-    name: MIT
-    url: https://github.com/yuzutech/kroki/blob/master/LICENSE
+  description: 'Operations tagged Diagrams across 2 of this provider''s published API definitions: kroki-openapi.yml, plantuml-server-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://kroki.io
   description: Public Kroki API
+- url: https://www.plantuml.com/plantuml
+  description: Public PlantUML Server
 tags:
 - name: Diagrams
   description: Generate diagrams from textual descriptions
@@ -101,6 +97,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+    servers:
+    - url: https://kroki.io
+      description: Public Kroki API
   /{diagram_type}/{output_format}:
     post:
       operationId: postDiagram
@@ -161,6 +160,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+    servers:
+    - url: https://kroki.io
+      description: Public Kroki API
   /png/{encoded}:
     get:
       operationId: getDiagramPng
@@ -185,6 +187,9 @@ paths:
                 format: binary
         '400':
           description: Invalid or malformed encoded diagram source
+    servers:
+    - url: https://www.plantuml.com/plantuml
+      description: Public PlantUML Server
   /svg/{encoded}:
     get:
       operationId: getDiagramSvg
@@ -208,6 +213,9 @@ paths:
                 type: string
         '400':
           description: Invalid or malformed encoded diagram source
+    servers:
+    - url: https://www.plantuml.com/plantuml
+      description: Public PlantUML Server
   /txt/{encoded}:
     get:
       operationId: getDiagramAscii
@@ -231,6 +239,9 @@ paths:
                 type: string
         '400':
           description: Invalid or malformed encoded diagram source
+    servers:
+    - url: https://www.plantuml.com/plantuml
+      description: Public PlantUML Server
   /pdf/{encoded}:
     get:
       operationId: getDiagramPdf
@@ -255,6 +266,9 @@ paths:
                 format: binary
         '400':
           description: Invalid or malformed encoded diagram source
+    servers:
+    - url: https://www.plantuml.com/plantuml
+      description: Public PlantUML Server
   /map/{encoded}:
     get:
       operationId: getDiagramImageMap
@@ -278,8 +292,20 @@ paths:
                 type: string
         '400':
           description: Invalid or malformed encoded diagram source
+    servers:
+    - url: https://www.plantuml.com/plantuml
+      description: Public PlantUML Server
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong
+        status_code:
+          type: integer
+          description: HTTP status code
     DiagramRequest:
       type: object
       required:
@@ -292,15 +318,6 @@ components:
           type: object
           description: Optional rendering options specific to the diagram type
           additionalProperties: true
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message describing what went wrong
-        status_code:
-          type: integer
-          description: HTTP status code
-externalDocs:
-  description: Kroki Documentation
-  url: https://docs.kroki.io/kroki/
+x-refined-from:
+- kroki-openapi.yml
+- plantuml-server-openapi.yml

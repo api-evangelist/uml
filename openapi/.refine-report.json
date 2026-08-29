@@ -1,9 +1,8 @@
 {
   "provider": "uml",
   "sources": [
-    "uml-diagrams-api-openapi.yml",
-    "uml-health-api-openapi.yml",
-    "uml-validation-api-openapi.yml"
+    "_original/kroki-openapi.yml",
+    "_original/plantuml-server-openapi.yml"
   ],
   "outputs": [
     "uml-diagrams-api-openapi.yml",
@@ -13,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "kroki-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "plantuml-server-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "tag 'Diagrams' spans 2 source specs (kroki-openapi.yml, plantuml-server-openapi.yml): per-path servers applied"
+  ],
+  "skipped": [
+    "uml-diagrams-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "uml-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "uml-validation-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

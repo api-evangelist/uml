@@ -1,17 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Kroki Diagram Diagrams Validation API
-  description: Kroki provides a unified HTTP API for generating diagrams from textual descriptions. It supports over 20 diagram types including PlantUML, Mermaid, GraphViz, BlockDiag, BPMN, C4, Structurizr, Excalidraw, Vega, WaveDrom, and more. Diagrams can be submitted as GET requests with the source encoded in the URL or as POST requests with the source in the request body.
+  title: PlantUML Server Validation API
+  description: The PlantUML Server provides a public REST API for generating UML and non-UML diagrams from plain-text descriptions. The diagram source is encoded into the URL path using a deflate + base64 algorithm. Multiple output formats are supported including PNG, SVG, ASCII art, and PDF.
   version: 1.0.0
   contact:
-    name: Kroki
-    url: https://kroki.io/
+    name: PlantUML
+    url: https://plantuml.com/
   license:
-    name: MIT
-    url: https://github.com/yuzutech/kroki/blob/master/LICENSE
+    name: GPL v3 / MIT dual-license
+    url: https://plantuml.com/license
 servers:
-- url: https://kroki.io
-  description: Public Kroki API
+- url: https://www.plantuml.com/plantuml
+  description: Public PlantUML Server
 tags:
 - name: Validation
   description: Validate PlantUML source syntax
@@ -38,5 +38,5 @@ paths:
               schema:
                 type: string
 externalDocs:
-  description: Kroki Documentation
-  url: https://docs.kroki.io/kroki/
+  description: PlantUML Server API Reference
+  url: https://deepwiki.com/plantuml/plantuml-server/6-api-reference
