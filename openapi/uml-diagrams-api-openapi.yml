@@ -297,15 +297,6 @@ paths:
       description: Public PlantUML Server
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message describing what went wrong
-        status_code:
-          type: integer
-          description: HTTP status code
     DiagramRequest:
       type: object
       required:
@@ -318,6 +309,15 @@ components:
           type: object
           description: Optional rendering options specific to the diagram type
           additionalProperties: true
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong
+        status_code:
+          type: integer
+          description: HTTP status code
 x-refined-from:
 - kroki-openapi.yml
 - plantuml-server-openapi.yml

@@ -16,7 +16,8 @@
     "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "kroki-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "plantuml-server-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "tag 'Diagrams' spans 2 source specs (kroki-openapi.yml, plantuml-server-openapi.yml): per-path servers applied"
+    "tag 'Diagrams' spans 2 source specs (kroki-openapi.yml, plantuml-server-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "uml-diagrams-api-openapi.yml: previously refined output, superseded by openapi/_original/",
