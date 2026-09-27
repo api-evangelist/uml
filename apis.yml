@@ -10,14 +10,19 @@ url: https://raw.githubusercontent.com/api-evangelist/uml/refs/heads/main/apis.y
 type: Index
 deliveryModel:
   model: unknown
-  open_source: false
+  license_evidence:
+    not_product:
+    - plantuml/plantuml
+    - yuzutech/kroki
+  open_source: unknown
   commercial: false
   callable_host: true
   label: Delivery model not determined — needs a product licence on record
   confidence: low
   source:
   - openapi
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -131,3 +136,4 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+kind: topic
