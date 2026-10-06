@@ -45,7 +45,7 @@ tags:
   - Design
   - Standards
 created: '2025-01-01'
-modified: '2026-05-19'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: uml:uml-diagrams-api
@@ -103,6 +103,8 @@ apis:
   - type: GettingStarted
     url: https://docs.kroki.io/kroki/setup/usage/
 common:
+  - url: https://www.omg.org/insights/
+    type: Blog
   - type: AgenticAccess
     url: agentic-access/uml-agentic-access.yml
   - type: DomainSecurity
