@@ -103,6 +103,12 @@ apis:
   - type: GettingStarted
     url: https://docs.kroki.io/kroki/setup/usage/
 common:
+  - type: Plans
+    url: plans/uml-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/uml-rate-limits.yml
+  - type: FinOps
+    url: finops/uml-finops.yml
   - url: https://www.omg.org/insights/
     type: Blog
   - type: AgenticAccess
